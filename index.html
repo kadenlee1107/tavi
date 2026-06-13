@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tavi — Food First Dating in Brooklyn</title>
+  <meta name="description" content="Tavi plans the date for you — a real plan at a real Brooklyn spot. Show up, eat well, see what happens. Join the waitlist.">
+  <meta name="theme-color" content="#C76A43">
+
+  <!-- Social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kadenlee1107.github.io/tavi/">
+  <meta property="og:title" content="Tavi — Food First Dating">
+  <meta property="og:description" content="Dates that actually happen. Tavi designs the date — a real plan at a real Brooklyn spot. Join the waitlist.">
+  <meta property="og:image" content="https://kadenlee1107.github.io/tavi/icon-512.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tavi — Food First Dating">
+  <meta name="twitter:description" content="Dates that actually happen. A real plan at a real Brooklyn spot. Join the waitlist.">
+  <meta name="twitter:image" content="https://kadenlee1107.github.io/tavi/icon-512.png">
+
+  <!-- Icons -->
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon-180.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --terracotta: #C76A43;
+      --terracotta-dark: #a9532f;
+      --cream: #F4ECDD;
+      --espresso: #3A2A20;
+      --card: #fffaf2;
+      --line: rgba(58, 42, 32, .14);
+      --serif: "Fraunces", Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--espresso);
+      font-family: var(--sans);
+      line-height: 1.62;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 600px; margin: 0 auto; padding: 40px 22px 64px; }
+
+    /* Header / logo */
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .brand svg { width: 44px; height: 44px; display: block; }
+    .brand .word { font-family: var(--serif); font-weight: 600; font-size: 1.9rem; letter-spacing: .5px; }
+
+    /* Hero */
+    .hero { margin-top: 44px; }
+    h1 {
+      font-family: var(--serif);
+      font-weight: 600;
+      font-size: clamp(2.3rem, 8.5vw, 3.4rem);
+      line-height: 1.05;
+      letter-spacing: -.5px;
+      margin: 0 0 18px;
+    }
+    h1 em { color: var(--terracotta); font-style: italic; }
+    .sub {
+      font-size: clamp(1.05rem, 4vw, 1.2rem);
+      max-width: 30ch;
+      margin: 0 0 30px;
+      color: rgba(58, 42, 32, .82);
+    }
+
+    /* Form card */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 10px 30px -18px rgba(58, 42, 32, .45);
+    }
+    .card h2 { font-family: var(--serif); font-weight: 600; font-size: 1.15rem; margin: 0 0 14px; }
+    label.f { display: block; font-size: .85rem; font-weight: 600; margin: 0 0 6px; color: rgba(58,42,32,.75); }
+    input, select {
+      width: 100%; font: inherit; color: var(--espresso);
+      background: #fff;
+      padding: 13px 14px; margin-bottom: 14px;
+      border: 1px solid var(--line); border-radius: 10px;
+      appearance: none;
+    }
+    select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%233A2A20' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 40px; }
+    input:focus-visible, select:focus-visible { outline: 3px solid rgba(199, 106, 67, .35); outline-offset: 1px; border-color: var(--terracotta); }
+    /* honeypot */
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    button {
+      width: 100%; font: inherit; font-weight: 700; cursor: pointer;
+      background: var(--terracotta); color: var(--cream);
+      padding: 14px 16px; border: 0; border-radius: 10px;
+      transition: background .15s ease;
+    }
+    button:hover { background: var(--terracotta-dark); }
+    button:disabled { opacity: .6; cursor: default; }
+    .note { font-size: .82rem; color: rgba(58,42,32,.6); margin: 12px 2px 0; }
+    #formStatus { font-size: .9rem; margin: 10px 2px 0; min-height: 1.2em; }
+    #formStatus.error { color: #b23b2e; }
+    #success { text-align: center; padding: 8px 4px; }
+    #success .big { font-family: var(--serif); font-size: 1.4rem; font-weight: 600; }
+
+    /* Content sections */
+    section.copy { margin-top: 46px; }
+    section.copy h3 { font-family: var(--serif); font-weight: 600; font-size: 1.05rem; letter-spacing: .3px; text-transform: uppercase; color: var(--terracotta); margin: 0 0 12px; }
+    ul.points { list-style: none; padding: 0; margin: 0; }
+    ul.points li { position: relative; padding-left: 26px; margin-bottom: 12px; }
+    ul.points li::before { content: ""; position: absolute; left: 0; top: .58em; width: 9px; height: 9px; border-radius: 50%; background: var(--terracotta); }
+    ul.plain { list-style: none; padding: 0; margin: 0; color: rgba(58,42,32,.82); }
+    ul.plain li { margin-bottom: 8px; }
+    .bk { margin-top: 40px; font-family: var(--serif); font-style: italic; font-size: 1.2rem; color: var(--espresso); }
+
+    footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--line); font-size: .82rem; color: rgba(58,42,32,.62); }
+    footer a { color: var(--terracotta); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    footer .legal { margin-bottom: 8px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <div class="brand">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Tavi logo">
+        <rect x="20" y="20" width="160" height="160" rx="38" fill="#C76A43"/>
+        <circle cx="100" cy="100" r="50" fill="#F4ECDD"/>
+        <circle cx="78" cy="100" r="15" fill="#3A2A20"/>
+        <circle cx="78" cy="100" r="7.5" fill="#F4ECDD"/>
+        <circle cx="122" cy="100" r="15" fill="#3A2A20"/>
+        <circle cx="122" cy="100" r="7.5" fill="#F4ECDD"/>
+      </svg>
+      <span class="word">tavi</span>
+    </div>
+
+    <div class="hero">
+      <h1>Dates that <em>actually</em> happen.</h1>
+      <p class="sub">Tavi plans the date for you — a real plan at a real Brooklyn spot. Show up, eat well, see what happens.</p>
+
+      <div class="card">
+        <h2>Be first in line.</h2>
+        <form id="waitlistForm" novalidate>
+          <label class="f" for="email">Email</label>
+          <input id="email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required>
+
+          <label class="f" for="neighborhood">Your Brooklyn neighborhood <span style="font-weight:400">(optional)</span></label>
+          <select id="neighborhood" name="neighborhood">
+            <option value="">Pick one…</option>
+            <option>Williamsburg</option>
+            <option>Greenpoint</option>
+            <option>Bushwick</option>
+            <option>Bedford-Stuyvesant</option>
+            <option>Crown Heights</option>
+            <option>Prospect Heights</option>
+            <option>Park Slope</option>
+            <option>Fort Greene</option>
+            <option>Clinton Hill</option>
+            <option>Downtown Brooklyn / DUMBO</option>
+            <option>Brooklyn Heights</option>
+            <option>Cobble Hill / Carroll Gardens</option>
+            <option>Gowanus</option>
+            <option>Prospect-Lefferts Gardens</option>
+            <option>Sunset Park</option>
+            <option>Bay Ridge</option>
+            <option value="Elsewhere in Brooklyn">Elsewhere in Brooklyn</option>
+            <option value="Elsewhere in NYC">Elsewhere in NYC</option>
+            <option value="Not in NYC yet">Not in NYC yet</option>
+          </select>
+
+          <div class="hp" aria-hidden="true">
+            <label for="company">Company</label>
+            <input id="company" name="company" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button id="submitBtn" type="submit">Join the waitlist</button>
+          <p id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+        <p class="note">No spam — just one note when Tavi opens in your neighborhood. We never sell your data.</p>
+
+        <div id="success" hidden>
+          <p class="big">You're on the list. 🎉</p>
+          <p>We'll reach out when Tavi opens near you.</p>
+        </div>
+      </div>
+    </div>
+
+    <section class="copy">
+      <h3>Why it works</h3>
+      <ul class="points">
+        <li><strong>Food first.</strong> Your tastes do the matching small talk can't.</li>
+        <li><strong>A real plan.</strong> A venue and a time, set — no "we should grab something sometime."</li>
+        <li><strong>Show up, eat well.</strong> The date is the meeting, not three weeks of texting.</li>
+        <li><strong>The flake pays.</strong> Stand someone up and it costs them, not you.</li>
+      </ul>
+    </section>
+
+    <section class="copy">
+      <h3>What Tavi isn't</h3>
+      <ul class="plain">
+        <li>No swiping circus. No chat purgatory.</li>
+        <li>No public scores. No ads.</li>
+        <li>We never sell your data, and your exact location is never stored.</li>
+      </ul>
+    </section>
+
+    <p class="bk">Brooklyn, for now — small on purpose.</p>
+
+    <footer>
+      <div class="legal">
+        <a href="https://kadenlee1107.github.io/tavi-legal/privacy.html">Privacy</a> ·
+        <a href="https://kadenlee1107.github.io/tavi-legal/terms.html">Terms</a> ·
+        <a href="https://kadenlee1107.github.io/tavi-legal/support.html">Support</a>
+      </div>
+      © 2026 Kaden Lee d/b/a Tavi · Brooklyn, NY · <a href="mailto:kadenlee1107@gmail.com">kadenlee1107@gmail.com</a>
+    </footer>
+  </main>
+
+  <script type="module">
+    import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
+
+    const SUPABASE_URL = 'https://rmeuivhrzzkfrcgbkqvn.supabase.co';
+    const SUPABASE_KEY = 'sb_publishable_tXFI9nh8DpQ6q5YkFYR7Lw_Ks29Tt4w';
+    const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    const form = document.getElementById('waitlistForm');
+    const emailInput = document.getElementById('email');
+    const hoodInput = document.getElementById('neighborhood');
+    const honeypot = document.getElementById('company');
+    const button = document.getElementById('submitBtn');
+    const statusEl = document.getElementById('formStatus');
+    const successEl = document.getElementById('success');
+
+    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    function setStatus(msg, isError) {
+      statusEl.textContent = msg || '';
+      statusEl.classList.toggle('error', !!isError);
+    }
+
+    function showSuccess(already) {
+      form.hidden = true;
+      successEl.hidden = false;
+      successEl.querySelector('.big').textContent = already
+        ? "You're already on the list. 🎉"
+        : "You're on the list. 🎉";
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      setStatus('');
+
+      // Bot trap: a real person never fills this hidden field.
+      if (honeypot.value) { showSuccess(); return; }
+
+      const email = emailInput.value.trim();
+      if (!EMAIL_RE.test(email)) {
+        setStatus('Please enter a valid email address.', true);
+        emailInput.focus();
+        return;
+      }
+
+      const original = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Joining…';
+
+      const neighborhood = hoodInput.value || null;
+
+      const { error } = await supabase
+        .from('waitlist')
+        .insert({ email, neighborhood, source: 'waitlist-web' });
+
+      if (!error) { showSuccess(false); return; }
+
+      // Unique-index hit → this email is already signed up. Treat it as a win.
+      if (error.code === '23505' || /duplicate|already exists/i.test(error.message || '')) {
+        showSuccess(true);
+        return;
+      }
+
+      button.disabled = false;
+      button.textContent = original;
+      setStatus("Hmm, that didn't go through. Please try again in a moment.", true);
+      console.error('waitlist insert failed', error);
+    });
+  </script>
+</body>
+</html>
